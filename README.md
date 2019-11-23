@@ -1,4 +1,5 @@
 # AVR-ADC-master
+This is a ADC master library for AVR
 
 ## Supported AVR chip list
       -----Tested-------
