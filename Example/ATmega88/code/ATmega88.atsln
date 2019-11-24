@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ATmega88", "ATmega88\ATmega88.cproj", "{28D758DF-A42A-4A8A-9CCC-C73F29C53AEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28D758DF-A42A-4A8A-9CCC-C73F29C53AEF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{28D758DF-A42A-4A8A-9CCC-C73F29C53AEF}.Debug|AVR.Build.0 = Debug|AVR
+		{28D758DF-A42A-4A8A-9CCC-C73F29C53AEF}.Release|AVR.ActiveCfg = Release|AVR
+		{28D758DF-A42A-4A8A-9CCC-C73F29C53AEF}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
