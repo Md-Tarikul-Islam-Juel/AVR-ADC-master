@@ -17,7 +17,7 @@ AVR ADC master library
         1) void ADC_INIT(uint8_t prescaler,uint8_t Voltage_Reference); 
         2) uint16_t ADC_READ(uint8_t channel);
 
-## Function 1:(ADC initialization)
+## Function 1: (ADC initialization)
       ADC_INIT(prescaler,Voltage_Reference); 
      
       prescaler:(2,4,8,16,32,64,128)
@@ -28,7 +28,7 @@ AVR ADC master library
       Voltage_reference:(AREF,AVCC,INTERNAL)
       ADC need a reference voltage for sampling or identify target voltage resolution.
       
-## Function 2:(ADC data read)
+## Function 2: (ADC data read)
       ADC_READ(uint8_t channel);
       
       channel:(0,1,2,3,4,5,6,7)
