@@ -2,10 +2,14 @@
 AVR ADC master library
 
 ## Supported AVR chip list
-      -----Tested-------
-      1) Atmega32A
-      2) Atmega328P
-
+     | -----------------Tested-----------------|
+     | 1) Atmega16             7)  ATmega8     |
+     | 2) ATmega32             8)  ATmega48    |
+     | 3) ATmega164            9)  ATmega88    |
+     | 4) ATmega324            10) ATmega168   |
+     | 5) ATmega644            11) ATmega328   |
+     | 6) ATmega1284           12) ATmega8535  |
+     |-----------------------------------------|
 
 
 
@@ -29,5 +33,42 @@ AVR ADC master library
       
       channel:(0,1,2,3,4,5,6,7)
       which channel you want to use to read analog data. For examople Atmega32A has portA (ADC0:ADC7).
+      
+## Example:
+
+      #ifndef F_CPU
+      #define F_CPU 16000000UL
+      #endif
+
+
+      #include <avr/io.h>
+      #include "lib/AVR_ADC_MASTER_JUEL.h"
+
+
+      int main(void)
+      {
+            uint16_t DATA;
+            DDRD |=(1<<PD0);//pin PD0 set as OUTPUT 
+
+            ADC_INIT(128,AVCC);// ADC Initialization 
+
+
+            while(1)
+
+            {	DATA = ADC_READ(0);//ADC data read from pin ADC0 [ADC0 set as INPUT]
+
+
+                  if (DATA>=512)
+                  {
+                        PORTD |=(1<<PD0);
+                  }
+                  else
+                  {
+                        PORTD &= ~(1<<PD0);
+                  }
+
+            }
+
+      }
       
       
