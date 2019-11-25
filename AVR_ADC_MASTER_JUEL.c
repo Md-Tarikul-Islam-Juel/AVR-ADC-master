@@ -3,6 +3,18 @@
  *
  * Created: 11/24/2019 12:18:34 AM
  *  Author: juel
+ *
+ *    -------------------ADC_INI()   step-------------------
+ *
+ *    1) ADC enable			3) reference voltage select
+ *    2) set prescaler		4) left adjust of for data register
+ *
+ *
+ *	 -------------------ADC_READ()   step-------------------
+ *
+ *	  5) Channel selection
+ *	  6) Start conversion enable
+ *	  7) Return received register data
  */ 
 
 #include "AVR_ADC_MASTER_JUEL.h"
@@ -19,10 +31,6 @@
 void ADC_INIT(uint8_t prescaler, uint8_t Voltage_Reference)
 {
 
-	//  ---------------------------step----------------------------
-	//  1) ADC enable			3) reference voltage select
-	//  2) set prescaler		4) left adjust of for data register
-	
 	
 	#if defined(__AVR_ATmega16__) || defined(__AVR_ATmega16A__) || defined(__AVR_ATmega16P__) || defined(__AVR_ATmega16PA__)\
 		|| defined(__AVR_ATmega32__) || defined(__AVR_ATmega32A__)\ 
