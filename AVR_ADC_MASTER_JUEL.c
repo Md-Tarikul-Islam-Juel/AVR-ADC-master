@@ -4,17 +4,25 @@
  * Created: 11/24/2019 12:18:34 AM
  *  Author: juel
  *
- *    -------------------ADC_INI()   step-------------------
+ *	  ====================== Register ======================
+ *	  ADMUX= REF1---REF0---ADLAR---MUX4--MUX3---MUx2---MUX1---MUX0
+ *	  ADCSRA=ADEN---ADSC---ADATE---ADIF---ADIE---ADPS2---ADPS1---ADPS0
+ *        ADC Data register
  *
- *    1) ADC enable			3) reference voltage select
- *    2) set prescaler		4) left adjust of for data register
+ *
+ *   	 ===================ADC_INI()   step===================
+ *
+ *    	 1) ADC enable	--------------------------------------ADEN=1
+ *  	 2) set prescaler------------------------------------ADPS2,ADPS1,ADPS0 [set 3 bit combination for prescaler]		
+ *   	 3) reference voltage select-------------------------REFS1,REFS0 [set 2 bit combination for reference voltage]
+ *   	 4) left adjust of for data register-----------------ADLAR
  *
  *
- *	 -------------------ADC_READ()   step-------------------
+ *	 ===================ADC_READ()   step===================
  *
- *	  5) Channel selection
- *	  6) Start conversion enable
- *	  7) Return received register data
+ *	  5) Channel selection-------------------------------MUX4:MUX0[avr atmega32]-----------MUX3:MUX0[avr atmega328]
+ *	  6) Start conversion enable-------------------------ADSC=1
+ *	  7) Return received register data-------------------ADCH,ADCL,ADCW
  */ 
 
 #include "AVR_ADC_MASTER_JUEL.h"
@@ -26,7 +34,7 @@
 
 //	------------possible parameter---------
 //	prescaler = 2,4,8,16,32,64,128
-//  Voltage_Reference = AREF,AVCC,INTERNAL
+//      Voltage_Reference = AREF,AVCC,INTERNAL
 
 void ADC_INIT(uint8_t prescaler, uint8_t Voltage_Reference)
 {
