@@ -71,4 +71,7 @@ AVR ADC master library
 
       }
       
-      
+# Limitation:
+     1) This library doesn't support differential channels.
+     2) By default free Running mode on[Special FunctionIO Register – SFIOR ],no other mode suport.
+
