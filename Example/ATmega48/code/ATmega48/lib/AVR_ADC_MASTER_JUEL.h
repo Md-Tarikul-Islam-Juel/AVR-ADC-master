@@ -1,8 +1,9 @@
 /*
  * AVR_ADC_MASTER_JUEL.h
  *
- * Created: 11/24/2019 12:18:23 AM
- *  Author: juel
+ *  Created: 11/24/2019 12:18:34 AM
+ *  Author: Md.Tarikul Islam Juel
+ *  Email : md.tarikulislamjuel@gmail.com
  */ 
 
 
@@ -11,7 +12,7 @@
 
 
 
-//-----------------This preprocessor ensure before compiling for the right board------------//
+//-----------------This preprocessor ensure before compiling for the right MCU------------//
 #if defined(__AVR_ATmega16__) || defined(__AVR_ATmega16A__) || defined(__AVR_ATmega16P__) || defined(__AVR_ATmega16PA__)
 #elif defined(__AVR_ATmega32__) || defined(__AVR_ATmega32A__)
 #elif defined(__AVR_ATmega164__) || defined(__AVR_ATmega164A__) || defined(__AVR_ATmega164P__) || defined(__AVR_ATmega164PA__)
@@ -27,25 +28,35 @@
 #else
 	#error "no definitions available for this AVR"
 #endif
-//------------------------------------------------------------------------------------------//
 
 
 
-//------------------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------------------------//
 #include <avr/io.h>
 
 #define AREF 0                 // 0 0
 #define AVCC 1                 // 0 1
 #define INTERNAL 3             // 1 1
-//------------------------------------------------------------------------------------------//
+
+#define A0 0
+#define A1 1
+#define A2 2
+#define A3 3
+#define A4 4
+#define A5 5
+#define A6 6
+#define A7 7
+//-----------------------------------------------------------------------------------------------------//
 
 
 
 //------------------------------------All the function--------------------------------------//
-void ADC_INIT(uint8_t prescaler,uint8_t Voltage_Reference);
-void ADC_PRESCALER_SET(uint8_t prescaler);
-void ADC_voltage_Reference(uint8_t Reference_Voltage);
-uint16_t ADC_READ(uint8_t channel);
+void ADC_INIT(uint8_t prescaler,uint8_t Voltage_Reference);// use this function from your main project
+uint16_t analogRead(uint8_t channel);// use this function from your main project
+
+void ADC_PRESCALER_SET(uint8_t prescaler);//This function is design for only inside this library
+void ADC_voltage_Reference(uint8_t Reference_Voltage);//This function is design for only inside this library
 //------------------------------------------------------------------------------------------//
 
 

@@ -1,11 +1,36 @@
 /*
- * AVR_ADC_MASTER_JUEL.c
+ *  AVR_ADC_MASTER_JUEL.c
  *
- * Created: 11/24/2019 12:18:34 AM
- *  Author: juel
+ *  Created: 11/24/2019 12:18:34 AM
+ *  Author: Md.Tarikul Islam Juel
+ *  Email : md.tarikulislamjuel@gmail.com
+ *
+ *	  ====================== Register ======================
+ *	  ADMUX= REF1---REF0---ADLAR---MUX4--MUX3---MUx2---MUX1---MUX0  ----------------------[ADC Multiplexer Selection Register]
+ *	  ADCSRA=ADEN---ADSC---ADATE---ADIF---ADIE---ADPS2---ADPS1---ADPS0--------------------[ADC Control and Status Register A]
+ *        ADC Data register-------------------------------------------------------------------[The ADC Data Register – ADCL and ADCH]
+ *
+ *
+ *
+ *       ===================ADC_INI()   step===================
+ *
+ *    	  1) ADC enable	--------------------------------------ADEN=1
+ *        2) set prescaler------------------------------------ADPS2,ADPS1,ADPS0 [set 3 bit combination for prescaler]		
+ *	  3) reference voltage select-------------------------REFS1,REFS0 [set 2 bit combination for reference voltage]
+ *	  4) left adjust of for data register-----------------ADLAR
+ *
+ *
+ *	 ===================ADC_READ()   step===================
+ *
+ *	  5) Channel selection-------------------------------MUX4:MUX0[avr atmega32]-----------MUX3:MUX0[avr atmega328]
+ *	  6) Start conversion enable-------------------------ADSC=1
+ *	  7) Return received register data-------------------ADCH,ADCL,ADCW
  */ 
 
 #include "AVR_ADC_MASTER_JUEL.h"
+
+uint8_t ADC_SINGLE_INIT=1;// This variable is use to ensure only one execute the ADC_INIT() 
+
 
 
 //################################################################################################################################################################################
@@ -18,11 +43,7 @@
 
 void ADC_INIT(uint8_t prescaler, uint8_t Voltage_Reference)
 {
-
-	//  ---------------------------step----------------------------
-	//  1) ADC enable			3) reference voltage select
-	//  2) set prescaler		4) left adjust of for data register
-	
+	ADC_SINGLE_INIT=0; //when ADC_INIT() call by user so we dont need to again execute ADC_INIT() inside the analogRead()
 	
 	#if defined(__AVR_ATmega16__) || defined(__AVR_ATmega16A__) || defined(__AVR_ATmega16P__) || defined(__AVR_ATmega16PA__)\
 		|| defined(__AVR_ATmega32__) || defined(__AVR_ATmega32A__)\ 
@@ -133,10 +154,18 @@ void ADC_voltage_Reference(uint8_t Reference_Voltage)
 
 
 //################################################################################################################################################################################
-//===========================================================|   ADC_READ() Start	|=============================================================================================
+//===========================================================|   analogRead() Start	|=============================================================================================
 //################################################################################################################################################################################
-uint16_t ADC_READ(uint8_t channel)
+uint16_t analogRead(uint8_t channel)
 {
+	
+	if(ADC_SINGLE_INIT==1)
+	{
+		ADC_INIT(128, AVCC); // we set [ADC_SINGLE_INIT= 0] inside the ADC_INIT() function
+							 // by default we set prescaler= 128
+							 // by default we set Reference voltage= AVCC
+		
+	}
 	
 	
 	#if defined(__AVR_ATmega16__) || defined(__AVR_ATmega16A__) || defined(__AVR_ATmega16P__) || defined(__AVR_ATmega16PA__)\
@@ -222,5 +251,5 @@ uint16_t ADC_READ(uint8_t channel)
 	#endif
 }
 //################################################################################################################################################################################
-//==============================================================|   ADC_READ() End	|=============================================================================================
+//==============================================================|   analogRead() End	|=============================================================================================
 //################################################################################################################################################################################
