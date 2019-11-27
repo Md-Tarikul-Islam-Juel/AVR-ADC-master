@@ -28,11 +28,26 @@ AVR ADC master library
       Voltage_reference:(AREF,AVCC,INTERNAL)
       ADC need a reference voltage for sampling or identify target voltage resolution.
       
-## Function 2: (ADC data read)
-      ADC_READ(uint8_t channel);
       
-      channel:(0,1,2,3,4,5,6,7)
+      
+      
+      NB:
+      It is not mandatory to use ADC_INIT() because,
+       
+      1) By default reference voltage AVCC has been selected
+      2) By default prescaler 128 has been selected
+       
+      if you want to change them, then you have to use ADC_INIT() otherwise you can ignore this function.
+       
+       
+      
+## Function 2: (ADC data read)
+      analogRead(uint8_t channel);
+      
+      channel:(0,1,2,3,4,5,6,7) or (A0,A1,A2,A3,A4,A5,A6,A7)
       which channel you want to use to read analog data. For examople Atmega32A has portA (ADC0:ADC7).
+      
+     
       
 ## Example:
 
@@ -50,12 +65,12 @@ AVR ADC master library
             uint16_t DATA;
             DDRD |=(1<<PD0);//pin PD0 set as OUTPUT 
 
-            ADC_INIT(128,AVCC);// ADC Initialization 
+            //ADC_INIT(128,AVCC);// ADC Initialization 
 
 
             while(1)
 
-            {	DATA = ADC_READ(0);//ADC data read from pin ADC0 [ADC0 set as INPUT]
+            {	DATA = analogRead(0);//ADC data read from pin ADC0 [ADC0 set as INPUT]
 
 
                   if (DATA>=512)
