@@ -15,7 +15,7 @@ AVR ADC master library
 
 ## Two main function:
         1) void ADC_INIT(uint8_t prescaler,uint8_t Voltage_Reference); 
-        2) uint16_t ADC_READ(uint8_t channel);
+        2) uint16_t analogRead(uint8_t channel);
 
 ## Function 1: (ADC initialization)
       ADC_INIT(prescaler,Voltage_Reference); 
