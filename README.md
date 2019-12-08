@@ -3,9 +3,7 @@
 # AVR-ADC-master Library
 ![](https://img.shields.io/badge/release-v%201.1.0-blue)
 
-<<<<<<< HEAD
-This library is designed for the Atmel AVR microcontroller. The most interesting part of this library is, 
-who are familiar with Arduino ADC, they can use it like an Arduino ADC library.
+This library is designed for the Atmel AVR microcontroller. The most interesting part of this library is, who are familiar with Arduino ADC, they can use it like an Arduino ADC library.
 
 
 **Contents**
@@ -22,24 +20,6 @@ who are familiar with Arduino ADC, they can use it like an Arduino ADC library.
   * [ADC Voltage Reference Map:](#adc-voltage-reference-map)
 - [Limitation:](#limitation)
 
-=======
-This library is designed for the Atmel AVR microcontroller. The interesting part of this library is who are familiar with Arduino ADC, they can use it like an Arduino ADC library.
-
-**Contents**
-
-- [AVR-ADC-master Library](#avr-adc-master-library)
-  * [Supported AVR chip list](#supported-avr-chip-list)
-  * [Two main function:](#two-main-function)
-  * [Function 1: (ADC initialization)](#function-1-adc-initialization)
-  * [Function 2: (ADC data read)](#function-2-adc-data-read)
-  * [Example:](#example)
-    + [CODE:](#code)
-    + [SIMULATION:](#simulation)
-  * [ADC Channel Map:](#adc-channel-map)
-  * [ADC Voltage Reference Map:](#adc-voltage-reference-map)
-- [Limitation:](#limitation)
-
->>>>>>> ea756c48803f4e3d2fe2ce25394a0992ded21b07
  
 ## Supported AVR chip list
 
@@ -158,23 +138,6 @@ This library is designed for the Atmel AVR microcontroller. The interesting part
 
 |            | **A0** | **A1** | **A2** | **A3** | **A4** | **A5** | **A6** | **A7** |
 |:----------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
-<<<<<<< HEAD
-| ATmega8    | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌  |
-| ATmega16   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega32   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega48   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌  |
-| ATmega88   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌  |
-| ATmega164  | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega168  | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌  |
-| ATmega324  | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega328  | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌  |
-| ATmega644  | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega1284 | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATmega8535 | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATtiny24   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATtiny44   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-| ATtiny84   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔   | ✔  |
-=======
 | ATmega8    | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ❌   | ❌     |
 | ATmega16   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔    | ✔      |
 | ATmega32   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔    | ✔      |
@@ -190,7 +153,6 @@ This library is designed for the Atmel AVR microcontroller. The interesting part
 | ATtiny24   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔    | ✔      |
 | ATtiny44   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔    | ✔      |
 | ATtiny84   | ✔      | ✔      | ✔      | ✔      | ✔      | ✔      | ✔    | ✔      |
->>>>>>> ea756c48803f4e3d2fe2ce25394a0992ded21b07
 
 
 ## ADC Voltage Reference Map:
@@ -202,21 +164,12 @@ This library is designed for the Atmel AVR microcontroller. The interesting part
 | ATmega32   | ✔    | ✔    | 2.56v    | ❌         | ❌           |
 | ATmega48   | ✔    | ✔    | 1.1v     | ❌         | ❌           |
 | ATmega88   | ✔    | ✔    | 1.1v     | ❌         | ❌           |
-<<<<<<< HEAD
-| ATmega164  | ✔    | ✔    | 2.56v    | ✔         | ✔           |
-| ATmega168  | ✔    | ✔    | 1.1v     | ❌         | ❌           |
-| ATmega324  | ✔    | ✔    | 2.56v    | ✔         | ✔           |
-| ATmega328  | ✔    | ✔    | 1.1v     | ❌         | ❌           |
-| ATmega644  | ✔    | ✔    | 2.56v    | ✔         | ✔           |
-| ATmega1284 | ✔    | ✔    | 2.56v    | ✔         | ✔           |
-=======
 | ATmega164  | ✔    | ✔    | 2.56v    | ✔          | ✔            |
 | ATmega168  | ✔    | ✔    | 1.1v     | ❌         | ❌           |
 | ATmega324  | ✔    | ✔    | 2.56v    | ✔          | ✔            |
 | ATmega328  | ✔    | ✔    | 1.1v     | ❌         | ❌           |
 | ATmega644  | ✔    | ✔    | 2.56v    | ✔          | ✔            |
 | ATmega1284 | ✔    | ✔    | 2.56v    | ✔          | ✔            |
->>>>>>> ea756c48803f4e3d2fe2ce25394a0992ded21b07
 | ATmega8535 | ✔    | ✔    | 2.56v    | ❌         | ❌           |
 | ATtiny24   | ✔    | ✔    | 1.1v     | ❌         | ❌           |
 | ATtiny44   | ✔    | ✔    | 1.1v     | ❌         | ❌           |
