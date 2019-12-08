@@ -130,7 +130,9 @@ This library is designed for the Atmel AVR microcontroller. The most interesting
       }
       
 ### SIMULATION:
-![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b5c6d85c773f2622eb9f3ddd52a79b17.png)          
+
+![atmega simulation](https://user-images.githubusercontent.com/28595839/70393148-676a3000-1a11-11ea-8f16-c32b1fcb5591.png)
+        
 > Figure: ATmega32 ADC simulation using Proteus.
 
 
