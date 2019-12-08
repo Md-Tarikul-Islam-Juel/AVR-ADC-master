@@ -179,6 +179,7 @@ This library is designed for the Atmel AVR microcontroller. The most interesting
 
 
 ⚠ ⚠ ⚠  Warning  ⚠ ⚠ ⚠
+
 For ATtiny24,44,84 please avoid (A0 or ADC0) channel for ADC read[analogread(A0)] while
 using AREF(External voltage reference).Because (A0 or ADC0) pin use as External voltage
 reference. In the other case(AVCC, INTERNAL), you can use this channel(A0 or ADC0) for 
