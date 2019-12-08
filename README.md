@@ -9,15 +9,15 @@ This library is designed for the Atmel AVR microcontroller. The interesting part
 
 - [AVR-ADC-master Library](#avr-adc-master-library)
   * [Supported AVR chip list](#supported-avr-chip-list)
-  * [Two main function:](#two-main-function-)
-  * [Function 1: (ADC initialization)](#function-1---adc-initialization-)
-  * [Function 2: (ADC data read)](#function-2---adc-data-read-)
-  * [Example:](#example-)
-    + [CODE:](#code-)
-    + [SIMULATION:](#simulation-)
-  * [ADC Channel Map:](#adc-channel-map-)
-  * [ADC Voltage Reference Map:](#adc-voltage-reference-map-)
-- [Limitation:](#limitation-)
+  * [Two main function:](#two-main-function)
+  * [Function 1: (ADC initialization)](#function-1---adc-initialization)
+  * [Function 2: (ADC data read)](#function-2---adc-data-read)
+  * [Example:](#example)
+    + [CODE:](#code)
+    + [SIMULATION:](#simulation)
+  * [ADC Channel Map:](#adc-channel-map)
+  * [ADC Voltage Reference Map:](#adc-voltage-reference-map)
+- [Limitation:](#limitation)
 
  
 ## Supported AVR chip list
