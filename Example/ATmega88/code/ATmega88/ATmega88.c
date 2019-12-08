@@ -21,12 +21,11 @@ int main(void)
 	uint16_t DATA;
 	DDRD |=(1<<PD0);//pin PD0 set as OUTPUT 
 
-	ADC_INIT(128,AVCC);
+	//ADC_INIT(128,AREF);
 	
-
 	while(1)
 
-	{	DATA = ADC_READ(0);//pin ADC0 set as INPUT
+	{	DATA = analogRead(A0);//pin ADC0 set as INPUT
 
 
 		if (DATA>=512)

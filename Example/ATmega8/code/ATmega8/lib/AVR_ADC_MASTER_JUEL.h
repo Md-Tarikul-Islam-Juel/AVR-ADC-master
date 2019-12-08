@@ -1,9 +1,9 @@
 /*
  * AVR_ADC_MASTER_JUEL.h
  *
- *  Created: 11/24/2019 12:18:34 AM
- *  Author: Md.Tarikul Islam Juel
- *  Email : md.tarikulislamjuel@gmail.com
+ *  Created: 12/07/2019 3:18:34 PM
+ *  Author: Md. Tarikul Islam Juel
+ *  Email: md.tarikulislamjuel@gmail.com
  */ 
 
 
@@ -25,6 +25,9 @@
 #elif defined(__AVR_ATmega88__) || defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88P__) || defined(__AVR_ATmega88PA__) || defined(__AVR_ATmega88PB__)
 #elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega168P__) || defined(__AVR_ATmega168A__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega168PB__)
 #elif defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__)
+#elif defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny24A__)
+#elif defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny44A__)
+#elif defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny84A__)
 #else
 	#error "no definitions available for this AVR"
 #endif
@@ -35,9 +38,11 @@
 //-----------------------------------------------------------------------------------------------------//
 #include <avr/io.h>
 
-#define AREF 0                 // 0 0
-#define AVCC 1                 // 0 1
-#define INTERNAL 3             // 1 1
+#define AREF 10                 
+#define AVCC 11                 
+#define INTERNAL 12             
+#define INTERNAL1v1 13
+#define INTERNAL2v56 14
 
 #define A0 0
 #define A1 1

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ATtiny24", "ATtiny24\ATtiny24.cproj", "{F93A209C-AF30-477E-847D-6BF2D406A6CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F93A209C-AF30-477E-847D-6BF2D406A6CE}.Debug|AVR.ActiveCfg = Debug|AVR
+		{F93A209C-AF30-477E-847D-6BF2D406A6CE}.Debug|AVR.Build.0 = Debug|AVR
+		{F93A209C-AF30-477E-847D-6BF2D406A6CE}.Release|AVR.ActiveCfg = Release|AVR
+		{F93A209C-AF30-477E-847D-6BF2D406A6CE}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

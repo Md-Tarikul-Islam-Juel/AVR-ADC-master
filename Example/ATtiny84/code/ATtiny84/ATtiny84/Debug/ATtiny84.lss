@@ -1,0 +1,373 @@
+
+ATtiny84.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000188  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00000188  000001fc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000001fe  2**0
+                  CONTENTS, READONLY
+  3 .debug_aranges 00000058  00000000  00000000  0000022e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   0000024b  00000000  00000000  00000286  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000162  00000000  00000000  000004d1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000218  00000000  00000000  00000633  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000088  00000000  00000000  0000084c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    0000020c  00000000  00000000  000008d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000200  00000000  00000000  00000ae0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000038  00000000  00000000  00000ce0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	18 c0       	rjmp	.+48     	; 0x32 <__ctors_end>
+   2:	2a c0       	rjmp	.+84     	; 0x58 <__bad_interrupt>
+   4:	29 c0       	rjmp	.+82     	; 0x58 <__bad_interrupt>
+   6:	28 c0       	rjmp	.+80     	; 0x58 <__bad_interrupt>
+   8:	27 c0       	rjmp	.+78     	; 0x58 <__bad_interrupt>
+   a:	26 c0       	rjmp	.+76     	; 0x58 <__bad_interrupt>
+   c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
+   e:	24 c0       	rjmp	.+72     	; 0x58 <__bad_interrupt>
+  10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
+  12:	22 c0       	rjmp	.+68     	; 0x58 <__bad_interrupt>
+  14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
+  16:	20 c0       	rjmp	.+64     	; 0x58 <__bad_interrupt>
+  18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
+  1a:	1e c0       	rjmp	.+60     	; 0x58 <__bad_interrupt>
+  1c:	1d c0       	rjmp	.+58     	; 0x58 <__bad_interrupt>
+  1e:	1c c0       	rjmp	.+56     	; 0x58 <__bad_interrupt>
+  20:	1b c0       	rjmp	.+54     	; 0x58 <__bad_interrupt>
+  22:	8e c0       	rjmp	.+284    	; 0x140 <analogRead+0x2c>
+  24:	91 c0       	rjmp	.+290    	; 0x148 <analogRead+0x34>
+  26:	92 c0       	rjmp	.+292    	; 0x14c <analogRead+0x38>
+  28:	93 c0       	rjmp	.+294    	; 0x150 <analogRead+0x3c>
+  2a:	96 c0       	rjmp	.+300    	; 0x158 <analogRead+0x44>
+  2c:	97 c0       	rjmp	.+302    	; 0x15c <analogRead+0x48>
+  2e:	9a c0       	rjmp	.+308    	; 0x164 <analogRead+0x50>
+  30:	9d c0       	rjmp	.+314    	; 0x16c <analogRead+0x58>
+
+00000032 <__ctors_end>:
+  32:	11 24       	eor	r1, r1
+  34:	1f be       	out	0x3f, r1	; 63
+  36:	cf e5       	ldi	r28, 0x5F	; 95
+  38:	d2 e0       	ldi	r29, 0x02	; 2
+  3a:	de bf       	out	0x3e, r29	; 62
+  3c:	cd bf       	out	0x3d, r28	; 61
+
+0000003e <__do_copy_data>:
+  3e:	10 e0       	ldi	r17, 0x00	; 0
+  40:	a0 e6       	ldi	r26, 0x60	; 96
+  42:	b0 e0       	ldi	r27, 0x00	; 0
+  44:	e8 e8       	ldi	r30, 0x88	; 136
+  46:	f1 e0       	ldi	r31, 0x01	; 1
+  48:	02 c0       	rjmp	.+4      	; 0x4e <__SREG__+0xf>
+  4a:	05 90       	lpm	r0, Z+
+  4c:	0d 92       	st	X+, r0
+  4e:	a2 36       	cpi	r26, 0x62	; 98
+  50:	b1 07       	cpc	r27, r17
+  52:	d9 f7       	brne	.-10     	; 0x4a <__SREG__+0xb>
+  54:	02 d0       	rcall	.+4      	; 0x5a <main>
+  56:	96 c0       	rjmp	.+300    	; 0x184 <_exit>
+
+00000058 <__bad_interrupt>:
+  58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
+
+0000005a <main>:
+
+
+int main(void)
+{
+	uint16_t DATA;
+	DDRB |=(1<<PB2);//pin PD0 set as OUTPUT
+  5a:	ba 9a       	sbi	0x17, 2	; 23
+
+	//ADC_INIT(128,AREF);
+	
+	while(1)
+
+	{	DATA = analogRead(A1);//pin ADC1 set as INPUT
+  5c:	81 e0       	ldi	r24, 0x01	; 1
+  5e:	5a d0       	rcall	.+180    	; 0x114 <analogRead>
+
+
+		if (DATA>=512)
+  60:	81 15       	cp	r24, r1
+  62:	92 40       	sbci	r25, 0x02	; 2
+  64:	10 f0       	brcs	.+4      	; 0x6a <main+0x10>
+		{
+			PORTB |=(1<<PB2);
+  66:	c2 9a       	sbi	0x18, 2	; 24
+  68:	f9 cf       	rjmp	.-14     	; 0x5c <main+0x2>
+		}
+		else
+		{
+			PORTB &= ~(1<<PB2);
+  6a:	c2 98       	cbi	0x18, 2	; 24
+  6c:	f7 cf       	rjmp	.-18     	; 0x5c <main+0x2>
+
+0000006e <ADC_PRESCALER_SET>:
+		|| defined(__AVR_ATmega168__) || defined(__AVR_ATmega168P__) || defined(__AVR_ATmega168A__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega168PB__)\
+		|| defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__)\
+		|| defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny24A__)\
+		|| defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny44A__)\
+		|| defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny84A__)
+			ADCSRA &= (~(1<<ADPS2)) & (~(1<<ADPS1)) & (~(1<<ADPS0)) ; // clear ADPS2:ADPS0 for initialization
+  6e:	96 b1       	in	r25, 0x06	; 6
+  70:	98 7f       	andi	r25, 0xF8	; 248
+  72:	96 b9       	out	0x06, r25	; 6
+	
+			switch(prescaler)
+  74:	88 30       	cpi	r24, 0x08	; 8
+  76:	c9 f0       	breq	.+50     	; 0xaa <ADC_PRESCALER_SET+0x3c>
+  78:	38 f4       	brcc	.+14     	; 0x88 <ADC_PRESCALER_SET+0x1a>
+  7a:	82 30       	cpi	r24, 0x02	; 2
+  7c:	91 f0       	breq	.+36     	; 0xa2 <ADC_PRESCALER_SET+0x34>
+  7e:	84 30       	cpi	r24, 0x04	; 4
+  80:	91 f0       	breq	.+36     	; 0xa6 <ADC_PRESCALER_SET+0x38>
+  82:	81 11       	cpse	r24, r1
+  84:	24 c0       	rjmp	.+72     	; 0xce <ADC_PRESCALER_SET+0x60>
+  86:	0b c0       	rjmp	.+22     	; 0x9e <ADC_PRESCALER_SET+0x30>
+  88:	80 32       	cpi	r24, 0x20	; 32
+  8a:	a9 f0       	breq	.+42     	; 0xb6 <ADC_PRESCALER_SET+0x48>
+  8c:	18 f4       	brcc	.+6      	; 0x94 <ADC_PRESCALER_SET+0x26>
+  8e:	80 31       	cpi	r24, 0x10	; 16
+  90:	81 f0       	breq	.+32     	; 0xb2 <ADC_PRESCALER_SET+0x44>
+  92:	1d c0       	rjmp	.+58     	; 0xce <ADC_PRESCALER_SET+0x60>
+  94:	80 34       	cpi	r24, 0x40	; 64
+  96:	99 f0       	breq	.+38     	; 0xbe <ADC_PRESCALER_SET+0x50>
+  98:	80 38       	cpi	r24, 0x80	; 128
+  9a:	a9 f0       	breq	.+42     	; 0xc6 <ADC_PRESCALER_SET+0x58>
+  9c:	18 c0       	rjmp	.+48     	; 0xce <ADC_PRESCALER_SET+0x60>
+			{
+				case 0:ADCSRA |= (1<<ADPS0);//-----------------------------------  0 0 0 --------------------- 2
+  9e:	30 9a       	sbi	0x06, 0	; 6
+				break;
+  a0:	08 95       	ret
+				case 2:ADCSRA |= (1<<ADPS0);//-----------------------------------  0 0 1 --------------------- 2
+  a2:	30 9a       	sbi	0x06, 0	; 6
+				break;
+  a4:	08 95       	ret
+				case 4:ADCSRA |= (1<<ADPS1);//-----------------------------------  0 1 0 --------------------- 4
+  a6:	31 9a       	sbi	0x06, 1	; 6
+				break;
+  a8:	08 95       	ret
+				case 8:ADCSRA |= (1<<ADPS1) | (1<<ADPS0);//----------------------  0 1 1 --------------------- 8
+  aa:	86 b1       	in	r24, 0x06	; 6
+  ac:	83 60       	ori	r24, 0x03	; 3
+  ae:	86 b9       	out	0x06, r24	; 6
+				break;
+  b0:	08 95       	ret
+				case 16:ADCSRA |= (1<<ADPS2);//----------------------------------  1 0 0 --------------------- 16
+  b2:	32 9a       	sbi	0x06, 2	; 6
+				break;
+  b4:	08 95       	ret
+				case 32:ADCSRA |= (1<<ADPS2) | (1<<ADPS0);//---------------------  1 0 1 --------------------- 32
+  b6:	86 b1       	in	r24, 0x06	; 6
+  b8:	85 60       	ori	r24, 0x05	; 5
+  ba:	86 b9       	out	0x06, r24	; 6
+				break;
+  bc:	08 95       	ret
+				case 64:ADCSRA |= (1<<ADPS2) | (1<<ADPS1);//---------------------  1 1 0 --------------------- 64
+  be:	86 b1       	in	r24, 0x06	; 6
+  c0:	86 60       	ori	r24, 0x06	; 6
+  c2:	86 b9       	out	0x06, r24	; 6
+				break;
+  c4:	08 95       	ret
+				case 128:ADCSRA |= (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);//-------  1 1 1 --------------------- 124
+  c6:	86 b1       	in	r24, 0x06	; 6
+  c8:	87 60       	ori	r24, 0x07	; 7
+  ca:	86 b9       	out	0x06, r24	; 6
+				break;
+  cc:	08 95       	ret
+				default:ADCSRA |= (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);//----------1 1 1 --------------------- 128
+  ce:	86 b1       	in	r24, 0x06	; 6
+  d0:	87 60       	ori	r24, 0x07	; 7
+  d2:	86 b9       	out	0x06, r24	; 6
+  d4:	08 95       	ret
+
+000000d6 <ADC_voltage_Reference>:
+			 //ATtiny84=1.1v
+			 
+			 //NB:ATmega24,44,84:
+			 //	 when external(AREF) will be selected as reference .please avoid A0 channel for ADC read because A0 use as external(AREF) reference pin
+			 
+			if(Reference_Voltage==AVCC){ADMUX &= (~(1<<REFS1)) & (~(1<<REFS0));}  //---------------------- 0 0 -------- AVCC
+  d6:	8b 30       	cpi	r24, 0x0B	; 11
+  d8:	21 f4       	brne	.+8      	; 0xe2 <ADC_voltage_Reference+0xc>
+  da:	87 b1       	in	r24, 0x07	; 7
+  dc:	8f 73       	andi	r24, 0x3F	; 63
+  de:	87 b9       	out	0x07, r24	; 7
+  e0:	08 95       	ret
+			else if (Reference_Voltage==AREF){ADMUX &= (~(1<<REFS1));ADMUX |= (1<<REFS0);}//-------------- 0 1 -------- AREF
+  e2:	8a 30       	cpi	r24, 0x0A	; 10
+  e4:	19 f4       	brne	.+6      	; 0xec <ADC_voltage_Reference+0x16>
+  e6:	3f 98       	cbi	0x07, 7	; 7
+  e8:	3e 9a       	sbi	0x07, 6	; 7
+  ea:	08 95       	ret
+			else if (Reference_Voltage==INTERNAL){ADMUX |= (1<<REFS1);ADMUX &= ~(1<<REFS0);}//------------ 1 0 -------- INTERNAL---------1.1v
+  ec:	8c 30       	cpi	r24, 0x0C	; 12
+  ee:	19 f4       	brne	.+6      	; 0xf6 <ADC_voltage_Reference+0x20>
+  f0:	3f 9a       	sbi	0x07, 7	; 7
+  f2:	3e 98       	cbi	0x07, 6	; 7
+  f4:	08 95       	ret
+			else{ADMUX &= (~(1<<REFS1)) & (~(1<<REFS0));}//----------------------------------------------- 0 1 -------- AVCC
+  f6:	87 b1       	in	r24, 0x07	; 7
+  f8:	8f 73       	andi	r24, 0x3F	; 63
+  fa:	87 b9       	out	0x07, r24	; 7
+  fc:	08 95       	ret
+
+000000fe <ADC_INIT>:
+//	------------possible parameter---------
+//	prescaler = 2,4,8,16,32,64,128
+//  Voltage_Reference = AREF,AVCC,INTERNAL,INTERNAL1v1,INTERNAL2v56
+
+void ADC_INIT(uint8_t prescaler, uint8_t Voltage_Reference)
+{
+  fe:	cf 93       	push	r28
+ 100:	c6 2f       	mov	r28, r22
+	ADC_SINGLE_INIT=0; //when ADC_INIT() call by user so we dont need to again execute ADC_INIT() inside the analogRead()
+ 102:	10 92 60 00 	sts	0x0060, r1
+	
+	
+	#if defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny24A__)\
+	    || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny44A__)\
+	    || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny84A__)
+			ADCSRA |= (1<<ADEN); // ADC Enable
+ 106:	37 9a       	sbi	0x06, 7	; 6
+			ADC_PRESCALER_SET(prescaler); // set sampling frequency by prescaler bit
+ 108:	b2 df       	rcall	.-156    	; 0x6e <ADC_PRESCALER_SET>
+			ADC_voltage_Reference(Voltage_Reference); //set voltage reference //by default AVCC has been selected
+ 10a:	8c 2f       	mov	r24, r28
+ 10c:	e4 df       	rcall	.-56     	; 0xd6 <ADC_voltage_Reference>
+			ADCSRB &= ~(1<<ADLAR); //left adjust off // Though by default left adjust off // this line use for more convenient for future developer
+ 10e:	1c 98       	cbi	0x03, 4	; 3
+	#endif
+}
+ 110:	cf 91       	pop	r28
+ 112:	08 95       	ret
+
+00000114 <analogRead>:
+
+//################################################################################################################################################################################
+//===========================================================|   analogRead() Start	|=============================================================================================
+//################################################################################################################################################################################
+uint16_t analogRead(uint8_t channel)
+{	
+ 114:	cf 93       	push	r28
+ 116:	c8 2f       	mov	r28, r24
+	if(ADC_SINGLE_INIT==1)
+ 118:	80 91 60 00 	lds	r24, 0x0060
+ 11c:	81 30       	cpi	r24, 0x01	; 1
+ 11e:	19 f4       	brne	.+6      	; 0x126 <analogRead+0x12>
+	{
+		ADC_INIT(128, AVCC); // we set [ADC_SINGLE_INIT= 0] inside the ADC_INIT() function to ensure only one execution of ADC_INIT()
+ 120:	6b e0       	ldi	r22, 0x0B	; 11
+ 122:	80 e8       	ldi	r24, 0x80	; 128
+ 124:	ec df       	rcall	.-40     	; 0xfe <ADC_INIT>
+		
+			
+	#elif defined(__AVR_ATtiny24__) || defined(__AVR_ATtiny24A__)\
+		  || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny44A__)\
+		  ||defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny84A__)
+			ADMUX &= (~(1<<MUX5)) & (~(1<<MUX4)) & (~(1<<MUX3)) & (~(1<<MUX2)) & (~(1<<MUX1)) & (~(1<<MUX0)); // clear MUX3:MUX0 for initialization
+ 126:	87 b1       	in	r24, 0x07	; 7
+ 128:	80 7c       	andi	r24, 0xC0	; 192
+ 12a:	87 b9       	out	0x07, r24	; 7
+			ADMUX |= (1<<MUX0);// set channel ADC1 default
+ 12c:	38 9a       	sbi	0x07, 0	; 7
+			
+			switch(channel)
+ 12e:	8c 2f       	mov	r24, r28
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	88 30       	cpi	r24, 0x08	; 8
+ 134:	91 05       	cpc	r25, r1
+ 136:	f0 f4       	brcc	.+60     	; 0x174 <analogRead+0x60>
+ 138:	fc 01       	movw	r30, r24
+ 13a:	ef 5e       	subi	r30, 0xEF	; 239
+ 13c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 13e:	09 94       	ijmp
+			{
+				case 0:ADMUX &= (~(1<<MUX5)) &  (~(1<<MUX4)) & (~(1<<MUX3)) & (~(1<<MUX2)) & (~(1<<MUX1)) & (~(1<<MUX0)); //--------0 0 0 0 0 0
+ 140:	87 b1       	in	r24, 0x07	; 7
+ 142:	80 7c       	andi	r24, 0xC0	; 192
+ 144:	87 b9       	out	0x07, r24	; 7
+				break;
+ 146:	17 c0       	rjmp	.+46     	; 0x176 <analogRead+0x62>
+				case 1:ADMUX |= (1<<MUX0);//----------------------------------------------------------------------------------------0 0 0 0 0 1
+ 148:	38 9a       	sbi	0x07, 0	; 7
+				break;
+ 14a:	15 c0       	rjmp	.+42     	; 0x176 <analogRead+0x62>
+				case 2:ADMUX |= (1<<MUX1);//----------------------------------------------------------------------------------------0 0 0 0 1 0
+ 14c:	39 9a       	sbi	0x07, 1	; 7
+				break;
+ 14e:	13 c0       	rjmp	.+38     	; 0x176 <analogRead+0x62>
+				case 3:ADMUX |= (1<<MUX1) | (1<<MUX0);//----------------------------------------------------------------------------0 0 0 0 1 1
+ 150:	87 b1       	in	r24, 0x07	; 7
+ 152:	83 60       	ori	r24, 0x03	; 3
+ 154:	87 b9       	out	0x07, r24	; 7
+				break;
+ 156:	0f c0       	rjmp	.+30     	; 0x176 <analogRead+0x62>
+				case 4:ADMUX |= (1<<MUX2);//----------------------------------------------------------------------------------------0 0 0 1 0 0
+ 158:	3a 9a       	sbi	0x07, 2	; 7
+				break;
+ 15a:	0d c0       	rjmp	.+26     	; 0x176 <analogRead+0x62>
+				case 5:ADMUX |= (1<<MUX2) | (1<<MUX0);//----------------------------------------------------------------------------0 0 0 1 0 1
+ 15c:	87 b1       	in	r24, 0x07	; 7
+ 15e:	85 60       	ori	r24, 0x05	; 5
+ 160:	87 b9       	out	0x07, r24	; 7
+				break;
+ 162:	09 c0       	rjmp	.+18     	; 0x176 <analogRead+0x62>
+				case 6:ADMUX |= (1<<MUX2) | (1<<MUX1);//----------------------------------------------------------------------------0 0 0 1 1 0
+ 164:	87 b1       	in	r24, 0x07	; 7
+ 166:	86 60       	ori	r24, 0x06	; 6
+ 168:	87 b9       	out	0x07, r24	; 7
+				break;
+ 16a:	05 c0       	rjmp	.+10     	; 0x176 <analogRead+0x62>
+				case 7:ADMUX |= (1<<MUX2) | (1<<MUX1) | (1<<MUX0);//----------------------------------------------------------------0 0 0 1 1 1
+ 16c:	87 b1       	in	r24, 0x07	; 7
+ 16e:	87 60       	ori	r24, 0x07	; 7
+ 170:	87 b9       	out	0x07, r24	; 7
+				break;
+ 172:	01 c0       	rjmp	.+2      	; 0x176 <analogRead+0x62>
+				default:ADMUX |= (1<<MUX0); // set channel ADC1 default-----NB:ATmega24,44,84:----when external(AREF) will be selected as reference .please avoid A0 channel for ADC read because A0 use as external(AREF) reference pin.so we set A1 by default.
+ 174:	38 9a       	sbi	0x07, 0	; 7
+				
+				
+				
+				
+			}
+			ADCSRA |=(1<<ADSC); // ADC conversion start
+ 176:	36 9a       	sbi	0x06, 6	; 6
+		
+			while((ADCSRA & (1<<ADIF)) == 0){}; // wait for end conversion ( after conversion ADIF bit will be set automatically )
+ 178:	34 9b       	sbis	0x06, 4	; 6
+ 17a:	fe cf       	rjmp	.-4      	; 0x178 <analogRead+0x64>
+			//uint8_t high,low;
+			//high=ADCH;
+			//low=ADCL;
+			return ADCW;// when conversion finished all data will be stored in ADCW
+ 17c:	84 b1       	in	r24, 0x04	; 4
+ 17e:	95 b1       	in	r25, 0x05	; 5
+		
+	
+	#else
+		#error "No processor type defined!"
+	#endif
+}
+ 180:	cf 91       	pop	r28
+ 182:	08 95       	ret
+
+00000184 <_exit>:
+ 184:	f8 94       	cli
+
+00000186 <__stop_program>:
+ 186:	ff cf       	rjmp	.-2      	; 0x186 <__stop_program>
